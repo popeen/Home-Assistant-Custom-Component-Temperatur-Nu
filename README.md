@@ -8,7 +8,7 @@
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 
-This custom component will includes a sensor for temperatur.nu as well as a service for reporting your current temperature
+This custom component includes a sensor for temperatur.nu as well as a service for reporting your current temperature
 
 **Sensor**\
 This sensor will show the current temperature on the set location
