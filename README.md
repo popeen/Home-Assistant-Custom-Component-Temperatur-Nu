@@ -15,7 +15,7 @@ This sensor will show the current temperature on the set location
 |Parameter| What to put |
 |--|--|
 | name | What do you want to call the sensor|
-| location | This is the name of the sensor on temperatur.nu. You will find it at the end of the url for you sensor. In the example we are using https://www.temperatur.nu/ekholmen |
+| location | This is the name of the station on temperatur.nu. You will find it at the end of the url for you sensor. In the example we are using https://www.temperatur.nu/ekholmen |
 ```  
 - platform: temperatur_nu
   name: Temperatur Ekholmen
