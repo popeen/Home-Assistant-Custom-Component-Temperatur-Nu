@@ -1,0 +1,11 @@
+{
+  "domain": "temperatur_nu",
+  "name": "Temperatur.nu",
+  "documentation": "https://github.com/popeen/Home-Assistant-Custom-Component-Temperatur-Nu",
+  "issue_tracker": "https://github.com/popeen/Home-Assistant-Custom-Component-Temperatur-Nu/issues",
+  "iot_class": "assumed_state",
+  "dependencies": [],
+  "codeowners": ["@popeen"],
+  "requirements": [],
+  "version": "0.1.0"
+}

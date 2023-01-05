@@ -1,0 +1,27 @@
+# Service ID
+send_temperature:
+  # Service name as shown in UI
+  name: send_temperature
+  # Description of the service
+  description: Send yout current temperature to Temperatur.nu
+  # Different fields that your service accepts
+  fields:
+    # Key of the field
+    hash:
+      # Field name as shown in UI
+      name: hash
+      # Description of the field
+      description: Your personal hash/token
+      # Whether or not field is required (default = false)
+      required: true
+      # Example value that can be passed for this field
+      example: "3d8dummy32c18dummye2d87adummy63f"
+    sensor:
+      # Field name as shown in UI
+      name: sensor
+      # Description of the field
+      description: The sensor that contains your temperatur
+      # Whether or not field is required (default = false)
+      required: true
+      # Example value that can be passed for this field
+      example: "sensor.temperature_outdoor_lowest"
