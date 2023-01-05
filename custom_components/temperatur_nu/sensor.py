@@ -12,6 +12,8 @@ from homeassistant.const import (
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
 
+DOMAIN = "temperatur_nu"
+
 CONF_NAME = "name"
 CONF_LOCATION = "location"
 
@@ -37,6 +39,7 @@ class TemperaturNuSensor(Entity):
     def __init__(self, name, location):
         """Initialize the sensor."""
         
+        self._attr_unique_id = f"{DOMAIN}_{location}"
         self._name = name
         self._location = location
         self._icon = "mdi:thermometer"
