@@ -2,5 +2,6 @@
   "name": "Temperatur.nu",
   "render_readme": true,
   "zip_release": true,
+  "country": "SE",
   "filename": "temperaturnu.zip"
 }
