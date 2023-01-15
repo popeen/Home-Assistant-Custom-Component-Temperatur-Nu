@@ -25,6 +25,12 @@ This sensor will show the current temperature on the set location
 **Reporting service**\
 This service will send your current temperature to temperatur.nu.\
 You will need the hash/token that you get when [setting up](https://www.temperatur.nu/info/rapportera-till-temperatur-nu/) your station. If you have a station set up already but don't know your token you can find it [here](https://www.temperatur.nu/egenadmin)
+
+To register the service in HA you need to either set up a sensor or add this to your configuration.yaml file
+```
+temperatur_nu:
+```
+
 |Parameter| What to put |
 |--|--|
 | hash | Your private hash |
