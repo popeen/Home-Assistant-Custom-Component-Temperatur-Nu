@@ -44,7 +44,7 @@ data:
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-ready%20for%20use-green.svg
 [issues-shield]: https://img.shields.io/github/issues-raw/popeen/Home-Assistant-Custom-Component-Temperatur-Nu.svg
 [license-shield]: https://img.shields.io/github/license/popeen/Home-Assistant-Custom-Component-Temperatur-Nu.svg
-[hacs-custom-shield]: https://img.shields.io/badge/HACS-Custom-orange.svg
+[hacs-custom-shield]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [hacs]: https://github.com/custom-components/hacs
 [buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
 [buymeacoffee]: https://www.buymeacoffee.com/popeen
