@@ -59,6 +59,11 @@ class TemperaturNuSensor(Entity):
         """Icon to use in the frontend."""
         return self._icon
 
+    @property
+    def unit_of_measurement(self) -> str:
+        """Return the unit of measurement."""
+        return '°C'
+
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self) -> None:
         """Get the latest data and updates the states."""
