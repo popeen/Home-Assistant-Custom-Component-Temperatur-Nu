@@ -10,27 +10,20 @@
 
 This custom component includes a sensor for temperatur.nu as well as a service for reporting your current temperature
 
-**Sensor**\
-This sensor will show the current temperature on the set location
-|Parameter| What to put |
-|--|--|
-| name | What do you want to call the sensor|
-| location | This is the name of the station on temperatur.nu. You will find it at the end of the url for the station. In the example we are using https://www.temperatur.nu/ekholmen |
-```
-sensor:
-  - platform: temperatur_nu
-    name: Temperatur Ekholmen
-    location: ekholmen
+After installing the integration using HACS and restarting your server you simply add it by clicking the button below or by going to Devices & Services and adding it from there.
 
-```  
+[![add-integration-shield]][add-integration]
+
+If you only want to use the service for reporting but are not interested in getting any sensors check the box for "Only register service". 
+
+If you want a sensor you enter the id of the sensor you want to add. You will find the id at the end of the url. For example the id is ekholmen in this url https://www.temperatur.nu/ekholmen
+
+Once a sensor is added there is no need to register the service separately as they will be automatically registered along with the sensor.
+
 **Reporting service**\
 This service will send your current temperature to temperatur.nu.\
 You will need the hash/token that you get when [setting up](https://www.temperatur.nu/info/rapportera-till-temperatur-nu/) your station. If you have a station set up already but don't know your token you can find it [here](https://www.temperatur.nu/egenadmin)
 
-To register the service in HA you need to either set up a sensor or add this to your configuration.yaml file
-```
-temperatur_nu:
-```
 
 |Parameter| What to put |
 |--|--|
@@ -55,3 +48,5 @@ data:
 [hacs]: https://github.com/custom-components/hacs
 [buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
 [buymeacoffee]: https://www.buymeacoffee.com/popeen
+[add-integration-shield]: https://my.home-assistant.io/badges/config_flow_start.svg
+[add-integration]: https://my.home-assistant.io/redirect/config_flow_start/?domain=temperatur_nu
