@@ -2,8 +2,9 @@
   "domain": "temperatur_nu",
   "name": "Temperatur.nu",
   "codeowners": ["@popeen"],
+  "config_flow": true,
   "documentation": "https://github.com/popeen/Home-Assistant-Custom-Component-Temperatur-Nu",
-  "iot_class": "assumed_state",
+  "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/popeen/Home-Assistant-Custom-Component-Temperatur-Nu/issues",
-  "version": "0.1.1"
+  "version": "2024.04.1"
 }

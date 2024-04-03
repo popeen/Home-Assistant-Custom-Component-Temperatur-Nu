@@ -1,0 +1,15 @@
+{
+    "config": {
+        "error": {
+            "unknown": "Unknown error"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "station": "ID of the station to add",
+                    "register": "Only Register Reporting Service"
+                }
+            }
+        }
+   }
+}
