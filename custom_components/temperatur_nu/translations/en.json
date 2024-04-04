@@ -1,7 +1,8 @@
 {
     "config": {
         "error": {
-            "unknown": "Unknown error"
+            "unknown": "Unknown error",
+            "invalid_station_id": "The station ID is invalid"
         },
         "step": {
             "user": {

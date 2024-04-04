@@ -1,6 +1,8 @@
+"""Temperatur.nu"""
 from __future__ import annotations
 from . import common
 from typing import Any
+from temperaturnu import TemperaturNu
 
 from homeassistant import config_entries, exceptions
 from homeassistant.core import HomeAssistant
@@ -9,8 +11,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import asyncio
 import voluptuous as vol
 
-
-DATA_SCHEMA = vol.Schema(
+SCHEMA= vol.Schema(
     {
         vol.Optional(common.CONF_STATION): str,
         vol.Optional(common.CONF_REGISTER): bool
@@ -24,10 +25,16 @@ async def validate_input(hass: HomeAssistant, data: dict) -> dict[str, Any]:
         if common.CONF_REGISTER in data:
             station = common.CONF_REGISTER
         else:
-            #TODO, Add validation
-            station = data[common.CONF_STATION]
-    except Exception:  # pylint: disable=broad-except
-        station = None
+            tempNu = TemperaturNu(common.CONF_API_CLI_ID)
+            station = await tempNu.get_name_async(data[common.CONF_STATION])
+            isValid = await tempNu.is_valid_id_async(data[common.CONF_STATION])
+            if not isValid:
+                raise InvalidStationID
+    except InvalidStationID:
+        common._LOGGER.exception("InvalidStationID exception")
+        raise InvalidStationID
+    except Exception:
+        common._LOGGER.exception("Unexpected exception")
     return station
 
 
@@ -40,15 +47,19 @@ class ConfigFlow(config_entries.ConfigFlow, domain=common.DOMAIN):
 
         errors = {}
         if user_input is not None:
+            
             try:
-                info = await validate_input(self.hass, user_input)
-                if info == common.CONF_REGISTER:
-                    info = "Register services"
-                return self.async_create_entry(title=info, data=user_input)
-            except Exception:  # pylint: disable=broad-except
-                common._LOGGER.exception("Unexpected exception")
-                errors["base"] = "unknown"
+                title = await validate_input(self.hass, user_input)
+                if title == common.CONF_REGISTER:
+                    title = "Register service"
+                return self.async_create_entry(title=title, data=user_input)
+            except InvalidStationID:
+                common._LOGGER.exception("InvalidStationID exception")
+                errors["base"] = "invalid_station_id"
 
         return self.async_show_form(
-            step_id="user", data_schema=DATA_SCHEMA, errors=errors
+            step_id="user", data_schema=SCHEMA, errors=errors
         )
+
+class InvalidStationID(exceptions.HomeAssistantError):
+    """Error to indicate the address was invalid."""

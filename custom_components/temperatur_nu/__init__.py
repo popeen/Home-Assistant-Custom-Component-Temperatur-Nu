@@ -1,7 +1,7 @@
 """Temperatur.nu"""
 from __future__ import annotations
 from . import common
-import requests
+from temperaturnu import TemperaturNu
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -31,8 +31,9 @@ def setup(hass, config):
         token = call.data.get(ATTR_HASH)
         sensor = call.data.get(ATTR_SENSOR)
         temp = HASS.states.get(sensor).state
-        requests.get(url="http://www.temperatur.nu/rapportera.php?hash=" + token + "&t=" + str(temp))
+        tempNu = TemperaturNu(common.CONF_API_CLI_ID)
+        tempNu.set_temp(token, temp)
     
-    hass.services.register(common.DOMAIN, "send_temperature", send_temperature)        
+    hass.services.register(common.DOMAIN, "send_temperature", send_temperature)
     
     return True
