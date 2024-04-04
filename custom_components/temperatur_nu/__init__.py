@@ -1,39 +1,40 @@
-"""Temperatur.nu"""
+"""The temperatur_nu integration"""
+
 from __future__ import annotations
-from . import common
+
 from temperaturnu import TemperaturNu
 
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 
-PLATFORMS: list[str] = ["sensor"]
+from .const import CONF_API_CLI_ID, CONF_STATION, DOMAIN, SRV_ATTR_HASH, SRV_ATTR_SENSOR
 
-ATTR_HASH = "hash"
-ATTR_SENSOR = "sensor"
-HASS = None
+PLATFORMS: list[Platform] = [Platform.SENSOR]
+
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    if common.CONF_REGISTER in entry.data:
-        name = common.CONF_REGISTER
-    else:
-        name = entry.data[common.CONF_STATION]
-    hass.data.setdefault(common.DOMAIN, {})[entry.entry_id] = name
-    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
-    return True
+    """Set up temperatur_nu from a config entry."""
 
-
-def setup(hass, config):
-    """Set up is called when Home Assistant is loading our component."""
-    HASS = hass
+    hass.data.setdefault(DOMAIN, {})[entry.entry_id] = entry.data[CONF_STATION]
 
     def send_temperature(call):
         """Handle the service call."""
-        token = call.data.get(ATTR_HASH)
-        sensor = call.data.get(ATTR_SENSOR)
-        temp = HASS.states.get(sensor).state
-        tempNu = TemperaturNu(common.CONF_API_CLI_ID)
+        token = call.data.get(SRV_ATTR_HASH)
+        sensor = call.data.get(SRV_ATTR_SENSOR)
+        temp = hass.states.get(sensor).state
+        tempNu = TemperaturNu(CONF_API_CLI_ID)
         tempNu.set_temp(token, temp)
-    
-    hass.services.register(common.DOMAIN, "send_temperature", send_temperature)
-    
+
+    hass.services.async_register(DOMAIN, "send_temperature", send_temperature)
+    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+
     return True
+
+
+async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+    """Unload a config entry."""
+    if unload_ok := await hass.config_entries.async_unload_platforms(entry, PLATFORMS):
+        hass.data[DOMAIN].pop(entry.entry_id)
+
+    return unload_ok

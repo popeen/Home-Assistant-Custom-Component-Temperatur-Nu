@@ -1,14 +1,14 @@
 {
     "config": {
         "error": {
-            "invalid_station_id": "The station ID is invalid",
-            "unknown": "Unknown error"
+            "unknown": "Unknown error",
+            "invalid_station_id": "The station ID is invalid"
         },
         "step": {
             "user": {
                 "data": {
-                    "register": "Only Register Reporting Service",
-                    "station": "ID of the station to add"
+                    "station": "ID of the station to add",
+                    "register": "Only Register Reporting Service"
                 }
             }
         }
