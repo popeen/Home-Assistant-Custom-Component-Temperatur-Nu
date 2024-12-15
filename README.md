@@ -1,11 +1,11 @@
 ## Home Assistant Custom Component: Temperatur.nu
 
 [![GitHub Release][releases-shield]][releases]
+[![downloads-shield]][release-link]
 ![Project Stage][project-stage-shield]
 [![issues-shield]](issues)
 [![License][license-shield]](LICENSE.md)
 [![hacs_badge][hacs-shield]][hacs]
-
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 
 This custom component includes a sensor for temperatur.nu as well as a service for reporting your current temperature
@@ -39,6 +39,8 @@ data:
 
 ```
 
+[downloads-shield]: https://img.shields.io/github/downloads/popeen/Home-Assistant-Custom-Component-Temperatur-Nu/total
+[release-link]: https://github.com/popeen/Home-Assistant-Custom-Component-Temperatur-Nu/releases
 [releases-shield]: https://img.shields.io/github/release/popeen/Home-Assistant-Custom-Component-Temperatur-Nu.svg
 [releases]: https://github.com/popeen/Home-Assistant-Custom-Component-Temperatur-Nu/releases
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-ready%20for%20use-green.svg
@@ -46,7 +48,7 @@ data:
 [license-shield]: https://img.shields.io/github/license/popeen/Home-Assistant-Custom-Component-Temperatur-Nu.svg
 [hacs-shield]: https://img.shields.io/badge/HACS-Default-41BDF5.svg
 [hacs]: https://github.com/custom-components/hacs
-[buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
+[buymeacoffee-shield]: https://img.shields.io/badge/donation-Buy%20me%20a%20coffee-orange
 [buymeacoffee]: https://www.buymeacoffee.com/popeen
 [add-integration-shield]: https://my.home-assistant.io/badges/config_flow_start.svg
 [add-integration]: https://my.home-assistant.io/redirect/config_flow_start/?domain=temperatur_nu
